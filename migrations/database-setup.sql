@@ -8,4 +8,4 @@ CREATE TABLE IF NOT EXISTS birds (
 );
 -- in psql:
 -- \copy table_name (col_1, col_2) FROM '/path/to/data.csv' DELIMITER ',' CSV HEADER;
--- \COPY birds(class_id, file_path, labels, data_set, scientific_name) FROM '/Users/kielay/code/projects/flask-bird-api/data/birds.csv' DELIMITER ',' CSV HEADER;
+COPY birds(class_id, file_path, labels, data_set, scientific_name) FROM '/Users/kielay/code/projects/flask-bird-api/data/birds.csv' DELIMITER ',' CSV HEADER;
