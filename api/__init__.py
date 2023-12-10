@@ -12,18 +12,22 @@ app.config.from_mapping(
     USER = os.getenv('USER')
 )
 
+@app.route('/')
+def index():
+    return 'Hello World'
+
 @app.route('/birds')
-def venues():
-    conn = psycopg2.connect(database = 'DATABASE', user = 'USER')
+def birds():
+    conn = psycopg2.connect(database=app.config['DATABASE'], user=app.config['USER'])
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM birds;')
-    venues = cursor.fetchall()
-    bird_objs = Bird(bird).__dict__ for bird in birds]
+    birds = cursor.fetchall()
+    bird_objs = [Bird(bird).__dict__ for bird in birds]
     return jsonify(bird_objs)
 
 @app.route('/birds/<id>')
-def show_venue(id):
-    conn = psycopg2.connect(database = 'DATABASE', user = 'USER')
+def show_bird(id):
+    conn = psycopg2.connect(database=app.config['DATABASE'], user=app.config['USER'])
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM venues WHERE id = %s LIMIT 1;", id)
     bird_inst = cursor.fetchone()
