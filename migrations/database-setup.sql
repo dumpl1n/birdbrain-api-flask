@@ -4,5 +4,5 @@ CREATE TABLE IF NOT EXISTS birds (
     file_path VARCHAR(255) NOT NULL,
     labels VARCHAR(255) NOT NULL,
     data_set VARCHAR(255) NOT NULL,
-    scientific_name VARCHAR(255) NOT NULL,
+    scientific_name VARCHAR(255) NOT NULL
 );
