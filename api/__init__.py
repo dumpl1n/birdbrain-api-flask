@@ -33,10 +33,12 @@ def show_bird(id):
     bird_data = cursor.fetchone()
     if bird_data:
         bird = Bird(bird_data)
-        # bird_dict = bird.__dict__
-        # bird_dict['image_url'] = bird.image_url()
+        bird_dict = bird.__dict__
         bird_image = bird.image_url()
-        return render_template('bird_image.html', image_url=bird_image) # jsonify(bird_dict)
+        # Render the template with the image URL
+        rendered_template = render_template('bird_image.html', image_url=bird_image)
+        # Return the rendered template along with the JSON data
+        return rendered_template + jsonify(bird_dict).get_data(as_text=True)
     else:
         return jsonify({"error": "Bird not found"}), 404
     # return jsonify(Bird(bird_data).__dict__)
