@@ -1,5 +1,6 @@
 flask-notebooks
 .env
 tasks.md
+api/.env
 # data/bird-training-images
 ```

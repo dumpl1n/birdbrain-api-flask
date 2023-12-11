@@ -1,7 +1,7 @@
-import os
-from dotenv import load_dotenv
+# import os
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 
-DATABASE = os.getenv('DATABASE')
-USER = os.getenv('USER')
+# DATABASE = os.getenv('DATABASE')
+# USER = os.getenv('USER')
