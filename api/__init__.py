@@ -1,26 +1,31 @@
 # import dependencies
-import os
-from dotenv import load_dotenv
+# import os
+# from dotenv import load_dotenv
 from flask import Flask, jsonify,render_template, current_app
 import psycopg2
 from bird import Bird
+from settings import DATABASE, USER
 
 # from .settings import DATABASE, USER
 
 
 app = Flask(__name__, static_folder='../data/bird-training-images/', template_folder='../templates/')
 
-load_dotenv()
-DATABASE = os.getenv('DATABASE')
-USER = os.getenv('USER')
+# without settings.py. direct to .env
+# load_dotenv()
+# DATABASE = os.getenv('DATABASE')
+# USER = os.getenv('USER')
 
-# app.config['DATABASE'] = DATABASE
-# app.config['USER'] = USER
+# app.config.from_mapping(
+#     DATABASE = os.getenv('DATABASE'),
+#     USER = os.getenv('USER')
+# )
 
-app.config.from_mapping(
-    DATABASE = os.getenv('DATABASE'),
-    USER = os.getenv('USER')
-)
+# with settings.py:
+app.config['DATABASE'] = DATABASE
+app.config['USER'] = USER
+
+
 
 @app.route('/')
 def index():
